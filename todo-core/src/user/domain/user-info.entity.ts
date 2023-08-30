@@ -1,4 +1,4 @@
-export type User = {
+export type UserInfo = {
   readonly id: string;
   readonly authId: string;
   readonly firstName: string;

@@ -1,12 +1,12 @@
-import { User } from "../domain/user.domain";
-import { createUserStorage } from "../infrastructure/createUser.storage";
+import { UserInfo } from "../domain/user-info.entity";
+import { ICreateUserRepository } from "../infrastructure/create-user.repository.interface";
 
 export interface ICreateUserUseCase {
-  execute(creator: createUserStorage, user: User): Promise<void>;
+  execute(repository: ICreateUserRepository, user: UserInfo): Promise<void>;
 }
 
-export const createUserCase: ICreateUserUseCase = {
-  execute: async (creator, user) => {
+export const createUserUseCaseImpl: ICreateUserUseCase = {
+  execute: async (repository, user) => {
     if (
       user.firstName === undefined ||
       user.firstName === null ||
@@ -20,7 +20,7 @@ export const createUserCase: ICreateUserUseCase = {
       throw new Error("User is undefined or null");
     }
 
-    await creator.create(user);
+    await repository.createUser(user);
     console.log(`User ${user.id} created`);
   },
 };

@@ -1,22 +1,23 @@
-import * as User from "./domain/user.domain";
-import * as UpdateUser from "./domain/updateUser.domain";
+// Repository
+export { ICreateUserRepository } from "./infrastructure/create-user.repository.interface";
+export { IDeleteUserRepository } from "./infrastructure/delete-user.repository.interface";
+export { IGetUserRepository } from "./infrastructure/get-user.repository.interface";
+export { IUpdateUserRepository } from "./infrastructure/update-user.repository.interface";
 
-import { createUserCase } from "./application/createUser.useCase";
-// import { updateUserUseCase } from "./application/updateUser.useCase";
-// import { getUserByIdUseCase } from "./application/getUserById.useCase";
+// UseCase
+export {
+  ICreateUserUseCase,
+  createUserUseCaseImpl,
+} from "./use-case/create-user";
 
-// import { createUserStorage } from "./infrastructure/createUser.storage";
-// import { getUserByIdStorage } from "./infrastructure/getUserById.storage";
-// import { updateUserStorage } from "./infrastructure/updateUserById.storage";
-// import { deleteUserByIdStorage } from "./infrastructure/deleteUserById.storage";
+export {
+  IDeleteUserUseCase as IDeleteUserByIdUserCase,
+  deleteUserUseCaseImpl as deleteUserByIdUseCaseImpl,
+} from "./use-case/delete-user";
 
-export const UserDomain = {
-  User,
-  UpdateUser,
-};
+export { IGetUserUseCase } from "./use-case/get-user";
+export { IUpdateUserUseCase } from "./use-case/update-user";
 
-export const UserApplication = {
-  createUserCase,
-  // updateUserUseCase,
-  // getUserByIdUseCase,
-};
+// Domain
+export { UserInfo } from "./domain/user-info.entity";
+export { UpdateUserInfo } from "./domain/update-user-info.entity";
